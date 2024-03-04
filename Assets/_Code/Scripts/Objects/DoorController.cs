@@ -4,66 +4,55 @@ using UnityEngine;
 
 public class DoorController : MonoBehaviour
 {
-    [Header("Configs")]
-    [SerializeField] Animator doorAnim;
-    [SerializeField] bool canOpen;
+    [Header("Door Configs")]
     [SerializeField] bool requireKey;
+    [SerializeField] float autoCloseDoorCooldown;
 
-    [Header("Reference")]
-    PlayerCollisionHandler playerCollisionHandler;
+    bool isDoorOnCooldown;
+    bool isDoorOpen;
+
+    Animator doorAnim;
+    PlayerInteractionHandler playerCollisionHandler;
 
     private void Start()
     {
-        // GameObject player = GameObject.FindWithTag("Player").TryGetComponent<PlayerCollisionHandler>(out PlayerCollisionHandler playerCollision);
-        // playerCollisionHandler = playerCollision;
-
-        GameObject player = GameObject.FindWithTag("Player");
-        player.transform.parent.TryGetComponent<PlayerCollisionHandler>(out PlayerCollisionHandler temp);
-        playerCollisionHandler = temp;
+        doorAnim = GetComponentInChildren<Animator>();
+        Transform parent = GameObject.FindWithTag("Player").transform.parent;
+        playerCollisionHandler = parent.GetComponent<PlayerInteractionHandler>();
     }
 
-    private void Update()
-    {
-        DoorInteract(requireKey);
-    }
-
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
-            canOpen = true;
-        else
-            canOpen = false;
+            if (Input.GetKeyDown(KeyCode.E))
+                if (requireKey && playerCollisionHandler.keyCount > 0 && !isDoorOpen && !isDoorOnCooldown)
+                {
+                    UseDoor();
+                    if (playerCollisionHandler.keyCount > 0)
+                    {
+                        playerCollisionHandler.keyCount--;
+                        requireKey = false;
+                    }
+                }
+                else if (!requireKey && !isDoorOpen && !isDoorOnCooldown)
+                    UseDoor();
+                else
+                    Debug.Log("Find some keys!");
     }
 
-    void DoorInteract(bool requireKey)
+    public void UseDoor()
     {
-        if (!requireKey)
-            OpenDoor();
-        else
-            OpenDoor(true);
+        doorAnim.SetTrigger("OpenDoor");
+        isDoorOpen = true;
+        StartCoroutine(DoorCooldown());
     }
 
-    void OpenDoor(bool keyCheck = false)
+    IEnumerator DoorCooldown()
     {
-
-        if (keyCheck && playerCollisionHandler.keyCount <= 0)
-            return;
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            if (canOpen)
-            {
-                if(playerCollisionHandler.keyCount > 0)
-                    playerCollisionHandler.keyCount--;
-                Debug.Log(playerCollisionHandler.keyCount);
-                doorAnim.Play("DoorOpen");
-                canOpen = false;
-            }
-            else
-            {
-                doorAnim.Play("DoorClose");
-                canOpen = true;
-            }
-        }
+        isDoorOnCooldown = true;
+        yield return new WaitForSeconds(autoCloseDoorCooldown);
+        doorAnim.SetTrigger("CloseDoor");
+        isDoorOpen = false;
+        isDoorOnCooldown = false;
     }
 }

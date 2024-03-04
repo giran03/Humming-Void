@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class LightsFlickerController : MonoBehaviour
 {
-    Light bulb;
     [Header("Configs")]
     [SerializeField] bool enableFlicker;
     [SerializeField] bool onOffBehaviour;
     [SerializeField] float minWaitTime;
     [SerializeField] float maxWaitTime;
     [SerializeField] float minLightIntensity;
+
+    bool turnOffAllLights;
+    Light bulb;
     Material lightMat;
     float defaultIntensity;
     bool changeIntensity;
@@ -31,8 +33,17 @@ public class LightsFlickerController : MonoBehaviour
             StartCoroutine(LightsFlickerOnOff());
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
+        // flip light switch once
+        if (turnOffAllLights)
+        {
+            bulb.enabled = false;
+            lightMat.SetColor("_EmissionColor", Color.white * 0f);
+        }
+        
+        if (turnOffAllLights) return;
+        // flip the light switch continuously
         if (!turnOffBulb)
         {
             bulb.enabled = true;
@@ -45,26 +56,27 @@ public class LightsFlickerController : MonoBehaviour
         }
 
         if (onOffBehaviour) return;
-
+        // Change intensity only
         if (!changeIntensity)
         {
             bulb.intensity = defaultIntensity;
-            // lightMat.SetColor("_EmissiveColor", new Vector4(255, 255, 255, 3f));
             lightMat.SetColor("_EmissionColor", Color.white * 3f);
         }
         else
         {
             bulb.intensity = minLightIntensity;
-            // lightMat.SetColor("_EmissiveColor", new Vector4(255, 255, 255, .5f));
             lightMat.SetColor("_EmissionColor", Color.white * 1f);
         }
     }
+
+    public void FlipLightSwitch() => turnOffAllLights = !turnOffAllLights;
 
     IEnumerator LightsFlickerIntensity()
     {
         while (true)
         {
             yield return new WaitForSeconds(Random.Range(minWaitTime, maxWaitTime));
+            if (turnOffAllLights) break;
             changeIntensity = !changeIntensity;
         }
     }
@@ -74,6 +86,7 @@ public class LightsFlickerController : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(Random.Range(minWaitTime, maxWaitTime));
+            if (turnOffAllLights) break;
             turnOffBulb = !turnOffBulb;
         }
     }

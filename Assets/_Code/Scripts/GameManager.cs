@@ -28,4 +28,6 @@ public class GameManager : MonoBehaviour
         foreach (GameObject obj in dimensions)
             obj.SetActive(!obj.activeSelf);
     }
+
+    public void TriggerAnimation(Animator anim, string animName) => anim.SetTrigger(animName);
 }

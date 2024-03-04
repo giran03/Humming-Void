@@ -6,6 +6,12 @@ TagManager:
   tags:
   - Key
   - Paper
+  - Door
+  - Graffiti
+  - Button
+  - VoidCube
+  - LightCube
+  - Light
   layers:
   - Default
   - TransparentFX
@@ -13,8 +19,8 @@ TagManager:
   - Ground
   - Water
   - UI
-  - ' Ignore Light'
-  - 
+  - Ignore Light
+  - Interactable
   - 
   - 
   - 

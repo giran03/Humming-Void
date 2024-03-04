@@ -11,6 +11,7 @@ public class FirstPersonCameraController : MonoBehaviour
     [SerializeField] Transform firstPersonCamera;
     [SerializeField] float sensX;
     [SerializeField] float sensY;
+    [Header("Configs")]
     float xRotation;
     float yRotation;
     private void Start()
@@ -21,7 +22,7 @@ public class FirstPersonCameraController : MonoBehaviour
     private void Update()
     {
         // follow player
-        firstPersonCamera.position = playerCamPosition.position;
+        transform.position = playerCamPosition.position;
 
         // mouse look
         float mousex = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
@@ -30,9 +31,8 @@ public class FirstPersonCameraController : MonoBehaviour
         yRotation += mousex;
         xRotation -= mousey;
 
-        xRotation = Mathf.Clamp(xRotation, -90, 90);
 
-        // Debug.Log(xRotation, this);
+        xRotation = Mathf.Clamp(xRotation, -90, 90);
 
         // rotate cam and orientation
         firstPersonCamera.rotation = Quaternion.Euler(xRotation, yRotation, 0);

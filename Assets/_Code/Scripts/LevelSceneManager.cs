@@ -13,7 +13,6 @@ public class LevelSceneManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
-        // KartHandler.CursorLock(false);
     }
 
     public void GoToScene(string sceneName) => SceneManager.LoadScene(sceneName);
