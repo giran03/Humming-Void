@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -22,6 +20,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] KeyCode jumpKey = KeyCode.Space;
     [SerializeField] KeyCode sprintKey = KeyCode.LeftShift;
 
+    [Header("Flashlight")]
+    [SerializeField] KeyCode flashlightKey = KeyCode.F;
+    [SerializeField] GameObject flashlightObj;
+
     [Header("Ground Check")]
     [SerializeField] float playerHeight;
     [SerializeField] string[] layerMasks;
@@ -37,14 +39,22 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Transform orientation;
     [SerializeField] float gravityValue;
 
+    [Header("Footsteps SFX")]
+    [SerializeField] AudioClip[] tileSteps;
+    AudioSource audioSource;
+
     float horizontalInput;
     float verticalInput;
 
-    (Vector3, quaternion) initialPosition;
+    (Vector3, Quaternion) initialPosition;
     Vector3 moveDirection;
     Rigidbody rb;
+    bool isPlaying;
+    Vector3 flatVel;
+
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         whatIsGround = LayerMask.GetMask(layerMasks);
@@ -62,6 +72,9 @@ public class PlayerController : MonoBehaviour
         StateHandler();
         PlayerBounds();
 
+        if (grounded && verticalInput != 0 || horizontalInput != 0)
+            PlayFootstepSound();
+
         // handle drag
         if (grounded)
             rb.drag = groundDrag;
@@ -78,6 +91,9 @@ public class PlayerController : MonoBehaviour
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
+
+        if (Input.GetKeyDown(flashlightKey))
+            flashlightObj.SetActive(!flashlightObj.activeSelf);
 
         if (!enableJump) return;
         // when to jump
@@ -144,13 +160,13 @@ public class PlayerController : MonoBehaviour
         // limiting speed on ground or in air
         else
         {
-            Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+            flatVel = new(rb.velocity.x, 0f, rb.velocity.z);
 
             // limit velocity if needed
             if (flatVel.magnitude > moveSpeed)
             {
                 Vector3 limitedVel = flatVel.normalized * moveSpeed;
-                rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
+                rb.velocity = new(limitedVel.x, rb.velocity.y, limitedVel.z);
             }
         }
     }
@@ -164,6 +180,7 @@ public class PlayerController : MonoBehaviour
 
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
     }
+    
     void ResetJump()
     {
         readyToJump = true;
@@ -202,7 +219,26 @@ public class PlayerController : MonoBehaviour
         Physics.SyncTransforms();
     }
 
-    public void TransitionLevel(Vector3 pos, quaternion rot)
+    public void PlayFootstepSound()
+    {
+        if (!isPlaying)
+        {
+            isPlaying = true;
+            int index = Random.Range(0, tileSteps.Length);
+            AudioClip footstepSound = tileSteps[index];
+            audioSource.PlayOneShot(footstepSound);
+            audioSource.pitch = flatVel.magnitude > 10f ? 2.5f : 1f;
+            StartCoroutine(Cooldown(footstepSound.length));
+        }
+    }
+
+    IEnumerator Cooldown(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        isPlaying = false;
+    }
+
+    public void TransitionLevel(Vector3 pos, Quaternion rot)
     {
         transform.SetPositionAndRotation(pos, rot);
         rb.velocity = Vector3.zero;

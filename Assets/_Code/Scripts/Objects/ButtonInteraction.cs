@@ -1,8 +1,6 @@
 using System.Collections;
-using System.Runtime.InteropServices.WindowsRuntime;
-using UnityEditor.EditorTools;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ButtonInteraction : MonoBehaviour, IInteractable
 {
@@ -43,6 +41,8 @@ public class ButtonInteraction : MonoBehaviour, IInteractable
     Animator buttonAnim;
     Renderer rend;
     int currentIndex;
+    private bool sfxPlayed;
+    Vector3 animatorPos;
 
     enum ButtonType
     {
@@ -56,12 +56,15 @@ public class ButtonInteraction : MonoBehaviour, IInteractable
     {
         buttonAnim = GetComponent<Animator>();
         rend = lightSphere.GetComponent<Renderer>();
+
+
     }
 
     public void Interact()
     {
         if (isButtonOnCooldown) return;
 
+        AudioManager.Instance.PlaySFX("Button_Down", transform.position);
         buttonAnim.SetTrigger("ButtonPush");
 
         if (buttonType == ButtonType.Activation)
@@ -85,11 +88,25 @@ public class ButtonInteraction : MonoBehaviour, IInteractable
     void TriggerAnimation()
     {
         if (animator.Length == 1 && animName.Length == 1)
+        {
             animator[0].SetTrigger(animName[0]);
+            animatorPos = animator[0].gameObject.transform.position;
+        }
+
         else
             for (int i = 0; i < animator.Length; i++)
+            {
                 animator[i].SetTrigger(animName[currentIndex]);
+                animatorPos = animator[i].gameObject.transform.position;
+            }
         currentIndex++;
+
+        if (!sfxPlayed)
+        {
+            sfxPlayed = true;
+            AudioManager.Instance.PlaySFX("Buzzer", animatorPos);
+            AudioManager.Instance.PlaySFX("MetalBars", animatorPos);
+        }
     }
 
     // flips the active state of the game objects in this array
@@ -112,6 +129,8 @@ public class ButtonInteraction : MonoBehaviour, IInteractable
         isButtonOnCooldown = true;
         rend.material = lightsOnGreen;
         yield return new WaitForSeconds(buttonCooldownDuration);
+
+        AudioManager.Instance.PlaySFX("Button_Up", transform.position);
         buttonAnim.SetTrigger("ButtonUp");
         rend.material = lightsOff;
         isButtonOnCooldown = false;
@@ -123,6 +142,7 @@ public class ButtonInteraction : MonoBehaviour, IInteractable
     {
         isButtonOnCooldown = true;
         rend.material = lightsOnRed;
+        AudioManager.Instance.PlaySFX("Button_Error", transform.position);
         yield return new WaitForSeconds(buttonCooldownDuration);
         rend.material = lightsOff;
         isButtonOnCooldown = false;

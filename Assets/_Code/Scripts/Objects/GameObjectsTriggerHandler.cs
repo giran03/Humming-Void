@@ -19,12 +19,15 @@ public class GameObjectsTriggerHandler : MonoBehaviour
     [Header("Trigger Will Flip Light Switch")]
     [SerializeField] bool toggleLightSwitch;
 
+    [Header("Trigger will also render region")]
+    [SerializeField] bool renderRegion;
 
     LightsFlickerController lightsFlickerController;
     GameObject[] lightCollection;
 
     GameManager gameManager;
     bool isTriggered;
+    bool sfxPlayed;
 
     enum TriggerType
     {
@@ -59,11 +62,22 @@ public class GameObjectsTriggerHandler : MonoBehaviour
 
     void Activated()
     {
+        if (renderRegion)
+            gameManager.FindLights();
+
         gameManager.FlipState(flipThisObjectsActiveState);
         isTriggered = true;
 
         if (triggerAnimation)
+        {
             gameManager.TriggerAnimation(animator, animationTriggerName);
+            if (!sfxPlayed)
+            {
+                sfxPlayed = true;
+                AudioManager.Instance.PlaySFX("Buzzer", animator.gameObject.transform.position);
+                AudioManager.Instance.PlaySFX("MetalBars", animator.gameObject.transform.position);
+            }
+        }
 
         if (toggleLightSwitch)
             foreach (var obj in lightCollection)

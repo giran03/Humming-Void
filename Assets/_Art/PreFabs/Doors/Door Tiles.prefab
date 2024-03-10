@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 24106103210434307}
   - component: {fileID: 7202405679964896660}
   - component: {fileID: 9172175224865880808}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: TileFloor_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 8813728934040293315}
   - component: {fileID: 5330237117982955110}
   - component: {fileID: 9144628427033253075}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: TileFloor_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -328,7 +328,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2345446081642203309}
   - component: {fileID: 4890474572340878645}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hinge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -384,7 +384,7 @@ GameObject:
   - component: {fileID: 118588267503789034}
   - component: {fileID: 6835884265801304560}
   - component: {fileID: 2860200765629367966}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: wall.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -490,7 +490,7 @@ GameObject:
   - component: {fileID: 6774244787987872306}
   - component: {fileID: 5717213703100326513}
   - component: {fileID: 3430883119873770158}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: TileFloor_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -596,7 +596,7 @@ GameObject:
   - component: {fileID: 2189298366094132421}
   - component: {fileID: 1629741690978686463}
   - component: {fileID: 8577063274555375571}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: wall.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -702,7 +702,7 @@ GameObject:
   - component: {fileID: 6240393794224504697}
   - component: {fileID: 3399556812823410865}
   - component: {fileID: 6498690450314438339}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: wall.002_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -808,7 +808,7 @@ GameObject:
   - component: {fileID: 9084295355444785985}
   - component: {fileID: 915380262922054308}
   - component: {fileID: 4326911922171651532}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: TileFloor_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -911,7 +911,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4189500320255805358}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -950,7 +950,7 @@ GameObject:
   - component: {fileID: 5513752441001821717}
   - component: {fileID: 8716898425760634833}
   - component: {fileID: 5621640334150824321}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Door Tiles
   m_TagString: Door
   m_Icon: {fileID: 0}
@@ -1030,7 +1030,7 @@ GameObject:
   - component: {fileID: 8810515278114374655}
   - component: {fileID: 6311260940707749154}
   - component: {fileID: 4926931000707972587}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Metal Door Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1138,7 +1138,7 @@ GameObject:
   - component: {fileID: 5378667934902228006}
   - component: {fileID: 7511775095556832319}
   - component: {fileID: 1688020408985037809}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: wall.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1244,7 +1244,7 @@ GameObject:
   - component: {fileID: 7621171912913639033}
   - component: {fileID: 1339718960798016731}
   - component: {fileID: 159839416963368507}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: wall.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1431,6 +1431,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: c683cdb357b62c140b30d4683c26683c, type: 2}
+    - target: {fileID: 922721883604150810, guid: 043f8a4cc981882488af8c1496a1c0ba,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 2280940041334073303, guid: 043f8a4cc981882488af8c1496a1c0ba,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -1455,6 +1460,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.26369894
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955460579948453037, guid: 043f8a4cc981882488af8c1496a1c0ba,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4191175108799211777, guid: 043f8a4cc981882488af8c1496a1c0ba,
         type: 3}
@@ -1490,6 +1500,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TileWall_Small_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7504195989211857063, guid: 043f8a4cc981882488af8c1496a1c0ba,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9139574176177642063, guid: 043f8a4cc981882488af8c1496a1c0ba,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -1604,6 +1624,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: c683cdb357b62c140b30d4683c26683c, type: 2}
+    - target: {fileID: 922721883604150810, guid: 043f8a4cc981882488af8c1496a1c0ba,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 2280940041334073303, guid: 043f8a4cc981882488af8c1496a1c0ba,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -1628,6 +1653,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.26369894
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955460579948453037, guid: 043f8a4cc981882488af8c1496a1c0ba,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4191175108799211777, guid: 043f8a4cc981882488af8c1496a1c0ba,
         type: 3}
@@ -1663,6 +1693,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TileWall_Small
+      objectReference: {fileID: 0}
+    - target: {fileID: 7504195989211857063, guid: 043f8a4cc981882488af8c1496a1c0ba,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9139574176177642063, guid: 043f8a4cc981882488af8c1496a1c0ba,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

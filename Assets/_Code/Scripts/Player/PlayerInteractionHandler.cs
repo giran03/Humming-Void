@@ -12,6 +12,7 @@ public class PlayerInteractionHandler : MonoBehaviour
     [Header("Configs")]
     [SerializeField] GameObject playerCamera;
     [SerializeField] Camera fpsCam;
+    [SerializeField] GameObject interactText;
 
 
     [Header("PhysGun Properties")]
@@ -40,6 +41,8 @@ public class PlayerInteractionHandler : MonoBehaviour
 
     private void Update()
     {
+        CheckForInteractableHover();
+
         if (Input.GetKeyDown(KeyCode.E))
             CheckForInteractable();
 
@@ -73,10 +76,10 @@ public class PlayerInteractionHandler : MonoBehaviour
 
     private void Grab()
     {
-
         if (Physics.Raycast(ray, out RaycastHit hit, maxGrabDistance, interactLayer)
             && hit.rigidbody != null && !hit.rigidbody.CompareTag("Player"))
         {
+            AudioManager.Instance.PlaySFX("Cube_Grab", transform.position, true);
             rotationOffset = Quaternion.Inverse(fpsCam.transform.rotation) * hit.rigidbody.rotation;
             grabOffset = hit.transform.InverseTransformVector(hit.point - hit.transform.position);
             grabDistance = hit.distance;
@@ -87,6 +90,7 @@ public class PlayerInteractionHandler : MonoBehaviour
 
     private void Release()
     {
+        AudioManager.Instance.StopSFX();
         selectedObject.useGravity = true;
         selectedObject = null;
     }
@@ -96,6 +100,17 @@ public class PlayerInteractionHandler : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit, maxGrabDistance, interactLayer))
             if (hit.collider.gameObject.TryGetComponent(out IInteractable interactOjb))
                 interactOjb.Interact();
+    }
+
+    private void CheckForInteractableHover()
+    {
+        if (Physics.Raycast(ray, out RaycastHit hit, maxGrabDistance, interactLayer))
+        {
+            if (hit.collider.gameObject.TryGetComponent(out IInteractable interactOjb))
+                interactText.SetActive(true);
+        }
+        else
+            interactText.SetActive(false);
     }
 
     void ResetStats()
@@ -110,6 +125,7 @@ public class PlayerInteractionHandler : MonoBehaviour
         {
             keyCount++;
             Debug.Log("Key Count" + keyCount);
+            AudioManager.Instance.PlaySFX("Key_PickUp", other.transform.position);
             var key = other.gameObject;
             Destroy(key);
         }
@@ -126,6 +142,8 @@ public class PlayerInteractionHandler : MonoBehaviour
                 {
                     gameManager.ChangeDimensions();
                     transform.SetPositionAndRotation(childTransform.position, childTransform.rotation);
+                    Physics.SyncTransforms();
+                    AudioManager.Instance.PlaySFX("Paper_PickUp", childTransform.position);
                 }
             }
         }

@@ -41,13 +41,13 @@ public class LightsFlickerController : MonoBehaviour
             bulb.enabled = false;
             lightMat.SetColor("_EmissionColor", Color.white * 0f);
         }
-        
+
         if (turnOffAllLights) return;
         // flip the light switch continuously
         if (!turnOffBulb)
         {
             bulb.enabled = true;
-            lightMat.SetColor("_EmissionColor", Color.white * 3f);
+            lightMat.SetColor("_EmissionColor", Color.white * .6f);
         }
         else
         {
@@ -60,12 +60,12 @@ public class LightsFlickerController : MonoBehaviour
         if (!changeIntensity)
         {
             bulb.intensity = defaultIntensity;
-            lightMat.SetColor("_EmissionColor", Color.white * 3f);
+            lightMat.SetColor("_EmissionColor", Color.white * .6f);
         }
         else
         {
             bulb.intensity = minLightIntensity;
-            lightMat.SetColor("_EmissionColor", Color.white * 1f);
+            lightMat.SetColor("_EmissionColor", Color.white * 0f);
         }
     }
 

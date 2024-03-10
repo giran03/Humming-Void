@@ -42,6 +42,7 @@ public class DoorController : MonoBehaviour
 
     public void UseDoor()
     {
+        AudioManager.Instance.PlaySFX("Door_Open", gameObject.transform.position);
         doorAnim.SetTrigger("OpenDoor");
         isDoorOpen = true;
         StartCoroutine(DoorCooldown());
@@ -51,6 +52,7 @@ public class DoorController : MonoBehaviour
     {
         isDoorOnCooldown = true;
         yield return new WaitForSeconds(autoCloseDoorCooldown);
+        AudioManager.Instance.PlaySFX("Door_Close", gameObject.transform.position);
         doorAnim.SetTrigger("CloseDoor");
         isDoorOpen = false;
         isDoorOnCooldown = false;

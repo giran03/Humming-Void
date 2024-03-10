@@ -11,16 +11,21 @@ public class FirstPersonCameraController : MonoBehaviour
     [SerializeField] Transform firstPersonCamera;
     [SerializeField] float sensX;
     [SerializeField] float sensY;
+
     [Header("Configs")]
+    public GameObject[] flourescentLightCollection;
     float xRotation;
     float yRotation;
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        flourescentLightCollection = GameObject.FindGameObjectsWithTag("Light");
     }
     private void Update()
     {
+        DisableObjects();
+
         // follow player
         transform.position = playerCamPosition.position;
 
@@ -38,5 +43,18 @@ public class FirstPersonCameraController : MonoBehaviour
         firstPersonCamera.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         playerOrientation.rotation = Quaternion.Euler(0, yRotation, 0);
         playerCamPosition.rotation = Quaternion.Euler(xRotation, yRotation, 0);
+    }
+
+    void DisableObjects()
+    {
+        foreach (GameObject lamp in flourescentLightCollection)
+        {
+            float distance = Vector3.Distance(transform.position, lamp.transform.position);
+
+            if (distance > 25f)
+                lamp.SetActive(false);
+            else
+                lamp.SetActive(true);
+        }
     }
 }

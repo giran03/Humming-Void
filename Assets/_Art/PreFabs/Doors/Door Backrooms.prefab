@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4464590432459478350}
   - component: {fileID: 7102331389202542229}
   - component: {fileID: 6642564482617012058}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: wall.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 1273635524080217371}
   - component: {fileID: 5997705644322100279}
   - component: {fileID: 7678920610340671392}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: wall.002_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -222,7 +222,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6120473363064357357}
   - component: {fileID: 161623236482189112}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hinge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -278,7 +278,7 @@ GameObject:
   - component: {fileID: 8553917604421231400}
   - component: {fileID: 3176707373175269435}
   - component: {fileID: 4567725753645929272}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Door Backrooms
   m_TagString: Door
   m_Icon: {fileID: 0}
@@ -353,7 +353,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2503123165383885898}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -392,7 +392,7 @@ GameObject:
   - component: {fileID: 6888154713138826078}
   - component: {fileID: 8706500510987624445}
   - component: {fileID: 1222775211185048233}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Metal Door Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -500,7 +500,7 @@ GameObject:
   - component: {fileID: 3389537546148342042}
   - component: {fileID: 5784160478237772758}
   - component: {fileID: 6535207456435885947}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: wall.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -606,7 +606,7 @@ GameObject:
   - component: {fileID: 7418181544176978582}
   - component: {fileID: 2567970150817866051}
   - component: {fileID: 7649753681665889816}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: wall.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -712,7 +712,7 @@ GameObject:
   - component: {fileID: 6646789592588781770}
   - component: {fileID: 7216329069718407865}
   - component: {fileID: 3740331802340741018}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: wall.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}

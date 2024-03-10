@@ -1,11 +1,26 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelSceneManager : MonoBehaviour
 {
+    public static LevelSceneManager Instance;
     public static Action<string> OnSceneChanged;
-    private void Awake() => OnSceneChanged += (scene) => GoToScene(scene);
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+            Destroy(gameObject);
+
+        OnSceneChanged += (scene) => GoToScene(scene);
+    }
+
     private void Start()
     {
         if (SceneManager.GetActiveScene().name == "MainMenu")
@@ -15,9 +30,9 @@ public class LevelSceneManager : MonoBehaviour
         }
     }
 
-    public void GoToScene(string sceneName) => SceneManager.LoadScene(sceneName);
+    public void GoToScene(string sceneName) => SceneManager.LoadSceneAsync(sceneName);
 
-    public void Play() => OnSceneChanged("Level_1");
+    public void Play() => OnSceneChanged("Game");
 
     public void Quit() => Application.Quit();
 }
