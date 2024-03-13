@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 interface IInteractable
@@ -14,6 +15,9 @@ public class PlayerInteractionHandler : MonoBehaviour
     [SerializeField] Camera fpsCam;
     [SerializeField] GameObject interactText;
 
+    [Header("HUD")]
+    [SerializeField] TMP_Text graffitiText;
+    [SerializeField] TMP_Text keyText;
 
     [Header("PhysGun Properties")]
     [SerializeField] LayerMask interactLayer;
@@ -42,6 +46,9 @@ public class PlayerInteractionHandler : MonoBehaviour
     private void Update()
     {
         CheckForInteractableHover();
+
+        graffitiText.SetText("X " + graffitiCount);
+        keyText.SetText("X " + keyCount);
 
         if (Input.GetKeyDown(KeyCode.E))
             CheckForInteractable();

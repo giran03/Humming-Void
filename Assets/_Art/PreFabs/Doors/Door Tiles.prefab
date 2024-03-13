@@ -1018,6 +1018,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requireKey: 0
   autoCloseDoorCooldown: 4
+  findKeyInfo: {fileID: 0}
 --- !u!1 &8294964488840150919
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5875947918953127629}
   - component: {fileID: 2613861706902194669}
   - component: {fileID: 3322712725417121126}
-  - component: {fileID: 909414223209724484}
   m_Layer: 3
   m_Name: Tileroom Floor Single
   m_TagString: Untagged
@@ -107,18 +106,3 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -629719859055844128, guid: 0d17401d1679e294b8500337beb64c84, type: 3}
---- !u!114 &909414223209724484
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 973973312219559763}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e829c87dc2a2ed2419c5f67848317fe4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  material: {fileID: 11400000, guid: 1ae39e85ad35335439c46ec8a6d27ea9, type: 2}
-  exportAllChildren: 0
-  terrainSimplificationLevel: 0

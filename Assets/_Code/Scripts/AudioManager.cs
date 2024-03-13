@@ -10,17 +10,15 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource musicSource, sfxSource;
 
     public static AudioManager Instance;
-    AudioSource currentLoopingAudioSource;
+    AudioSource currentSfxLooping;
+    AudioSource currentMusic;
 
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
+        if (Instance != null && Instance != this)
+            Destroy(this);
         else
-            Destroy(gameObject);
+            Instance = this;
     }
 
     private void Start() => PlayMusic("Ambience");
@@ -33,6 +31,7 @@ public class AudioManager : MonoBehaviour
             musicSource.clip = sound.audioClip;
             musicSource.loop = true;
             musicSource.Play();
+            currentMusic = musicSource;
         }
     }
 
@@ -45,14 +44,12 @@ public class AudioManager : MonoBehaviour
 
             if (loop)
             {
-                if (currentLoopingAudioSource != null)
-                {
-                    currentLoopingAudioSource.Stop();
-                }
+                if (currentSfxLooping != null)
+                    currentSfxLooping.Stop();
 
                 sfxSource.clip = sound.audioClip;
                 sfxSource.Play();
-                currentLoopingAudioSource = sfxSource;
+                currentSfxLooping = sfxSource;
             }
             else
             {
@@ -62,12 +59,21 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void StopMusic()
+    {
+        if (currentMusic != null)
+        {
+            currentMusic.Stop();
+            currentMusic = null;
+        }
+    }
+
     public void StopSFX()
     {
-        if (currentLoopingAudioSource != null)
+        if (currentSfxLooping != null)
         {
-            currentLoopingAudioSource.Stop();
-            currentLoopingAudioSource = null;
+            currentSfxLooping.Stop();
+            currentSfxLooping = null;
         }
     }
 

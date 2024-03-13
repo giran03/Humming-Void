@@ -49,8 +49,8 @@ MonoBehaviour:
   playerOrientation: {fileID: 0}
   playerCamPosition: {fileID: 0}
   firstPersonCamera: {fileID: 7914467844445296047}
-  sensX: 50
-  sensY: 50
+  mouseSensitivitySlider: {fileID: 6415346925823640830, guid: 99e7aecf5b0269e48ae7e621d7726c62,
+    type: 3}
   flourescentLightCollection: []
 --- !u!54 &1832357787108002110
 Rigidbody:

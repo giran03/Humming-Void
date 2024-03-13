@@ -2696,7 +2696,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3111654267012847327}
-  - component: {fileID: 4001380016661433203}
   m_Layer: 3
   m_Name: TileCeiling_Large
   m_TagString: Untagged
@@ -2726,21 +2725,6 @@ Transform:
   - {fileID: 6916644174591711195}
   m_Father: {fileID: 931934105028691104}
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
---- !u!114 &4001380016661433203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4563489542407161897}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e829c87dc2a2ed2419c5f67848317fe4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  material: {fileID: 11400000, guid: 1ae39e85ad35335439c46ec8a6d27ea9, type: 2}
-  exportAllChildren: 1
-  terrainSimplificationLevel: 0
 --- !u!1 &4627831300768464751
 GameObject:
   m_ObjectHideFlags: 0
@@ -4128,7 +4112,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2326101823202826723}
-  - component: {fileID: 5723631572684529178}
   m_Layer: 3
   m_Name: TileWall_Large_1
   m_TagString: Untagged
@@ -4162,21 +4145,6 @@ Transform:
   - {fileID: 6935689707055228814}
   m_Father: {fileID: 931934105028691104}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!114 &5723631572684529178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5748035559596693276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e829c87dc2a2ed2419c5f67848317fe4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  material: {fileID: 11400000, guid: 1ae39e85ad35335439c46ec8a6d27ea9, type: 2}
-  exportAllChildren: 1
-  terrainSimplificationLevel: 0
 --- !u!1 &5768486959655277630
 GameObject:
   m_ObjectHideFlags: 0
@@ -4504,7 +4472,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3556765600740803270}
-  - component: {fileID: 9106938055925648647}
   m_Layer: 3
   m_Name: TileWall_Large
   m_TagString: Untagged
@@ -4554,21 +4521,6 @@ Transform:
   - {fileID: 279239955844268288}
   m_Father: {fileID: 931934105028691104}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!114 &9106938055925648647
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5909983169909482507}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e829c87dc2a2ed2419c5f67848317fe4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  material: {fileID: 11400000, guid: 1ae39e85ad35335439c46ec8a6d27ea9, type: 2}
-  exportAllChildren: 1
-  terrainSimplificationLevel: 0
 --- !u!1 &5981856543797888682
 GameObject:
   m_ObjectHideFlags: 0
@@ -5956,7 +5908,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3534251109916329901}
-  - component: {fileID: 3472507269746372738}
   m_Layer: 3
   m_Name: TileFloor_Large
   m_TagString: Untagged
@@ -5998,21 +5949,6 @@ Transform:
   - {fileID: 5932644559560486953}
   m_Father: {fileID: 931934105028691104}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3472507269746372738
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7498277691862289714}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e829c87dc2a2ed2419c5f67848317fe4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  material: {fileID: 11400000, guid: 1ae39e85ad35335439c46ec8a6d27ea9, type: 2}
-  exportAllChildren: 1
-  terrainSimplificationLevel: 0
 --- !u!1 &7530492561986697605
 GameObject:
   m_ObjectHideFlags: 0

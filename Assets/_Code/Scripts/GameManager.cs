@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
 
+// TODO: CREDITS SCREEN
+// TODO: LEVEL TRANSITION
 public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject[] dimensions;
@@ -8,13 +10,10 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
+        if (Instance != null && Instance != this)
+            Destroy(this);
         else
-            Destroy(gameObject);
+            Instance = this;
     }
 
     public void FlipState(GameObject[] gameObjects)

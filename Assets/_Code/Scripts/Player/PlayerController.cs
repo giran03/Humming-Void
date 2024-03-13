@@ -19,6 +19,13 @@ public class PlayerController : MonoBehaviour
     [Header("Keybinds")]
     [SerializeField] KeyCode jumpKey = KeyCode.Space;
     [SerializeField] KeyCode sprintKey = KeyCode.LeftShift;
+    [SerializeField] KeyCode escMenuKey = KeyCode.Escape;
+    
+    // Presentation
+    [SerializeField] KeyCode endGame = KeyCode.Alpha0;
+
+    [Header("Pause Menu")]
+    [SerializeField] GameObject pauseMenu;
 
     [Header("Flashlight")]
     [SerializeField] KeyCode flashlightKey = KeyCode.F;
@@ -51,6 +58,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody rb;
     bool isPlaying;
     Vector3 flatVel;
+    bool isPaused;
 
     void Start()
     {
@@ -93,7 +101,23 @@ public class PlayerController : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
 
         if (Input.GetKeyDown(flashlightKey))
+        {
+            AudioManager.Instance.PlaySFX("Flashlight", transform.position);
             flashlightObj.SetActive(!flashlightObj.activeSelf);
+        }
+
+        //esc menu
+        if (Input.GetKeyDown(escMenuKey))
+        {
+            isPaused = !isPaused;
+            if (isPaused)
+                LevelSceneManager.Instance.PauseGame(pauseMenu);
+            else
+                LevelSceneManager.Instance.ResumeGame(pauseMenu);
+        }
+
+        if (Input.GetKeyDown(endGame))
+            LevelSceneManager.Instance.GoToScene("End Screen");
 
         if (!enableJump) return;
         // when to jump
@@ -180,7 +204,7 @@ public class PlayerController : MonoBehaviour
 
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
     }
-    
+
     void ResetJump()
     {
         readyToJump = true;

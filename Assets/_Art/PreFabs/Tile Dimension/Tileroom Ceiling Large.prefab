@@ -221,7 +221,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4788094967899477494}
-  - component: {fileID: 8635568670053951049}
   m_Layer: 3
   m_Name: Tileroom Ceiling Large
   m_TagString: Untagged
@@ -249,21 +248,6 @@ Transform:
   - {fileID: 7254808484600089992}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
---- !u!114 &8635568670053951049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3375657846588634123}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e829c87dc2a2ed2419c5f67848317fe4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  material: {fileID: 11400000, guid: 1ae39e85ad35335439c46ec8a6d27ea9, type: 2}
-  exportAllChildren: 1
-  terrainSimplificationLevel: 0
 --- !u!1 &6030810374470987085
 GameObject:
   m_ObjectHideFlags: 0

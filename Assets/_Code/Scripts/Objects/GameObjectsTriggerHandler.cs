@@ -80,10 +80,13 @@ public class GameObjectsTriggerHandler : MonoBehaviour
         }
 
         if (toggleLightSwitch)
+        {
+            AudioManager.Instance.PlaySFX("Lights", transform.position);
             foreach (var obj in lightCollection)
             {
                 lightsFlickerController = obj.GetComponent<LightsFlickerController>();
                 lightsFlickerController.FlipLightSwitch();
             }
+        }
     }
 }
