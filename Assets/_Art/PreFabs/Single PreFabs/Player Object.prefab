@@ -283,21 +283,18 @@ MonoBehaviour:
   walkSpeed: 5
   sprintSpeed: 11
   groundDrag: 8
-  enableJump: 0
-  jumpForce: 7
-  jumpCooldown: 1
-  airMultiplier: 0.05
-  jumpKey: 32
   sprintKey: 304
+  escMenuKey: 27
+  endGame: 48
+  pauseMenu: {fileID: 0}
   flashlightKey: 102
   flashlightObj: {fileID: 0}
   playerHeight: 2
-  layerMasks:
-  - Ground
-  maxSlopeAngle: 75
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 8
   orientation: {fileID: 4317389323927609903}
-  gravityValue: 0.2
-  tileSteps:
+  footSteps:
   - {fileID: 8300000, guid: 9530e3bcc07ec1b479bcdb64efaf15a0, type: 3}
   - {fileID: 8300000, guid: 2bb5f15af5c92cc4d9c20e23a078ce69, type: 3}
   - {fileID: 8300000, guid: ee0bf28ad1c5d184980ee1e7e308e0bd, type: 3}
@@ -321,9 +318,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edd521cac952e104dbfd073285abd1cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dimensions: []
   playerCamera: {fileID: 0}
   fpsCam: {fileID: 0}
   interactText: {fileID: 0}
+  graffitiText: {fileID: 0}
+  keyText: {fileID: 0}
   interactLayer:
     serializedVersion: 2
     m_Bits: 128

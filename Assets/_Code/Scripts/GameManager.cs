@@ -14,12 +14,16 @@ public class GameManager : MonoBehaviour
             Instance = this;
     }
 
+    public void Start() => LevelSceneManager.Instance.DisableCursor();
+
     private void Update()
     {
+        // PRESENTATION KEY BINDS
         if (Input.GetKeyDown(KeyCode.Alpha1))
             LevelSceneManager.Instance.GoToScene("Level 1 Parreno");
         else if (Input.GetKeyDown(KeyCode.Alpha2))
             LevelSceneManager.Instance.GoToScene("Level 2 Cifra");
+        // ADD BINDS FOR LEVEL 3
     }
 
     public void FlipState(GameObject[] gameObjects)

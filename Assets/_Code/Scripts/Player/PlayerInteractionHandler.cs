@@ -42,6 +42,7 @@ public class PlayerInteractionHandler : MonoBehaviour
     private void Start()
     {
         ResetStats();
+        graffitiCount = PlayerPrefs.GetInt("graffitiCount");
     }
 
     private void Update()

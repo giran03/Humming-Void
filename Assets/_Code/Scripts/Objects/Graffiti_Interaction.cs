@@ -9,7 +9,6 @@ public class Graffiti_Interaction : MonoBehaviour, IInteractable
     {
         var tempObj = GameObject.FindGameObjectWithTag("Player");
         playerInteractionHandler = tempObj.transform.parent.GetComponent<PlayerInteractionHandler>();
-        PlayerPrefs.SetInt("graffitiCount", 0);
     }
     public void Interact()
     {

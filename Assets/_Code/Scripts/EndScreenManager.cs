@@ -14,6 +14,8 @@ public class EndScreenManager : MonoBehaviour
     int highScore;
     void Start()
     {
+        LevelSceneManager.Instance.EnableCursor();
+
         highScore = PlayerPrefs.GetInt("highScore");
         currentTotal = PlayerPrefs.GetInt("graffitiCount");
         // display the total graffiti collected count

@@ -6,9 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class LevelSceneManager : MonoBehaviour
 {
+    [SerializeField] Animator animator = null;
     public static LevelSceneManager Instance;
-    public static Action<string> OnSceneChanged;
     string currentScene;
+    bool isCreditsScreen;
 
     private void Awake()
     {
@@ -35,14 +36,23 @@ public class LevelSceneManager : MonoBehaviour
         SceneManager.LoadSceneAsync(sceneName);
     }
 
-    public void Play() => GoToScene("Level 1 Parreno");
+    public void Play()
+    {
+        ResetGraffitiCount();
+        GoToScene("Level 1 Parreno");
+    }
 
-    public void Quit() => Application.Quit();
+    public void Quit()
+    {
+        ResetGraffitiCount();
+        Application.Quit();
+    }
 
     public void ReturnMainMenu()
     {
         Time.timeScale = 1f;
         AudioManager.Instance.StopMusic();
+        ResetGraffitiCount();
         SceneManager.LoadScene("Main Menu");
     }
 
@@ -73,4 +83,18 @@ public class LevelSceneManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
+
+    void ResetGraffitiCount()
+    {
+        PlayerPrefs.SetInt("graffitiCount", 0);
+        PlayerPrefs.Save();
+    }
+
+    // MAIN MENU ANIMATIONS
+    public void CreditsSceneTransition()
+    {
+        isCreditsScreen = true;
+        animator.SetTrigger("creditsShow");
+    }
+    public void MainMenuTransition() => animator.SetTrigger("mainMenuShow");
 }
