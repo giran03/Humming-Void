@@ -18552,49 +18552,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 687085373}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &706867788
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 706867790}
-  - component: {fileID: 706867789}
-  m_Layer: 0
-  m_Name: Occlusion Area_1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!192 &706867789
-OcclusionArea:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 706867788}
-  serializedVersion: 2
-  m_Size: {x: 2.357294, y: 1, z: 0.8163234}
-  m_Center: {x: 1.0150968, y: 0, z: -0.007735582}
-  m_IsViewVolume: 1
---- !u!4 &706867790
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 706867788}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.12, y: 0, z: 119.48}
-  m_LocalScale: {x: 13.039, y: 13.039, z: 13.039}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &706925771
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48441,49 +48398,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1949629910}
   m_Mesh: {fileID: -629719859055844128, guid: 0d17401d1679e294b8500337beb64c84, type: 3}
---- !u!1 &1950281738
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1950281740}
-  - component: {fileID: 1950281739}
-  m_Layer: 0
-  m_Name: Occlusion Area
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!192 &1950281739
-OcclusionArea:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1950281738}
-  serializedVersion: 2
-  m_Size: {x: 1.5246876, y: 1, z: 2.4039526}
-  m_Center: {x: -0.05228008, y: 0, z: 0.048647784}
-  m_IsViewVolume: 1
---- !u!4 &1950281740
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1950281738}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.8, y: 0, z: 104.8}
-  m_LocalScale: {x: 13.039, y: 13.039, z: 13.039}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1955943371
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52117,7 +52031,7 @@ PrefabInstance:
     - target: {fileID: 781669558845105322, guid: 49f3e40805ffae04c83c538070e5a96e,
         type: 3}
       propertyPath: far clip plane
-      value: 50
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 781669558845105322, guid: 49f3e40805ffae04c83c538070e5a96e,
         type: 3}
@@ -55424,5 +55338,3 @@ SceneRoots:
   - {fileID: 737607632}
   - {fileID: 1084268818}
   - {fileID: 2053855517}
-  - {fileID: 1950281740}
-  - {fileID: 706867790}

@@ -9,7 +9,6 @@ public class LevelSceneManager : MonoBehaviour
     [SerializeField] Animator animator = null;
     public static LevelSceneManager Instance;
     string currentScene;
-    bool isCreditsScreen;
 
     private void Awake()
     {
@@ -91,10 +90,9 @@ public class LevelSceneManager : MonoBehaviour
     }
 
     // MAIN MENU ANIMATIONS
-    public void CreditsSceneTransition()
-    {
-        isCreditsScreen = true;
-        animator.SetTrigger("creditsShow");
-    }
-    public void MainMenuTransition() => animator.SetTrigger("mainMenuShow");
+    public void CreditsScreenTransition()=> animator.SetTrigger("creditsShow");
+    public void CreditsToMenuTransition() => animator.SetTrigger("creditsToMenu");
+
+    public void ControlsScreenTransition()=> animator.SetTrigger("controlsShow");
+    public void ControlsToMenuTransition() => animator.SetTrigger("controlsToMenu");
 }
