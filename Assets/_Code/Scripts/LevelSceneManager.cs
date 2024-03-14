@@ -15,20 +15,20 @@ public class LevelSceneManager : MonoBehaviour
         else
             Instance = this;
 
-        OnSceneChanged += (scene) => GoToScene(scene);
+        // OnSceneChanged += (scene) => GoToScene(scene);
 
-        QualitySettings.vSyncCount = 2;
+        QualitySettings.vSyncCount = 1;
     }
 
     private void Start()
     {
-        if (SceneManager.GetActiveScene().name == "MainMenu")
+        if (SceneManager.GetActiveScene().name == "Main Menu")
             EnableCursor();
     }
 
     public void GoToScene(string sceneName) => SceneManager.LoadSceneAsync(sceneName);
 
-    public void Play() => OnSceneChanged("Game"); // change to the scene name of the first level
+    public void Play() => OnSceneChanged("Level 1 Parreno");
 
     public void Quit() => Application.Quit();
 

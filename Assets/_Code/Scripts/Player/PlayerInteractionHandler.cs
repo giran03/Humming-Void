@@ -10,6 +10,9 @@ interface IInteractable
 
 public class PlayerInteractionHandler : MonoBehaviour
 {
+    [Header ("Level Dimensions")]
+    [SerializeField] GameObject[] dimensions;
+
     [Header("Configs")]
     [SerializeField] GameObject playerCamera;
     [SerializeField] Camera fpsCam;
@@ -28,7 +31,6 @@ public class PlayerInteractionHandler : MonoBehaviour
     [HideInInspector] public int keyCount;
     [HideInInspector] public int graffitiCount;
 
-    GameManager gameManager;
     float grabDistance;
     Quaternion rotationOffset;
     Rigidbody selectedObject;
@@ -39,7 +41,6 @@ public class PlayerInteractionHandler : MonoBehaviour
 
     private void Start()
     {
-        gameManager = GameManager.Instance;
         ResetStats();
     }
 
@@ -123,7 +124,6 @@ public class PlayerInteractionHandler : MonoBehaviour
     void ResetStats()
     {
         keyCount = 0;
-        graffitiCount = 0;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -147,12 +147,16 @@ public class PlayerInteractionHandler : MonoBehaviour
 
                 if (childTransform.name == "LinkedDestination")
                 {
-                    gameManager.ChangeDimensions();
+                    GameManager.Instance.ChangeDimensions(dimensions);
                     transform.SetPositionAndRotation(childTransform.position, childTransform.rotation);
                     Physics.SyncTransforms();
                     AudioManager.Instance.PlaySFX("Paper_PickUp", childTransform.position);
                 }
             }
         }
+
+        if (other.gameObject.CompareTag("Finish"))
+            LevelSceneManager.Instance.GoToScene("Level 2 Cifra");
+            
     }
 }
