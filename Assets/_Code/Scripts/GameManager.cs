@@ -2,7 +2,6 @@ using System;
 using UnityEngine;
 
 // TODO: CREDITS SCREEN
-// TODO: LEVEL TRANSITION
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
@@ -33,13 +32,6 @@ public class GameManager : MonoBehaviour
     {
         foreach (GameObject obj in dimensions)
             obj.SetActive(!obj.activeSelf);
-        FindLights();
-    }
-
-    public void FindLights()
-    {
-        FirstPersonCameraController firstPersonCameraController = GameObject.Find("Camera Holder").GetComponent<FirstPersonCameraController>();
-        firstPersonCameraController.flourescentLightCollection = GameObject.FindGameObjectsWithTag("Light");
     }
 
     public void TriggerAnimation(Animator anim, string animName) => anim.SetTrigger(animName);

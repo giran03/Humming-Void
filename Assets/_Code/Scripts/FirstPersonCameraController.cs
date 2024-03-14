@@ -32,8 +32,6 @@ public class FirstPersonCameraController : MonoBehaviour
     }
     private void Update()
     {
-        DisableObjects();
-
         // follow player
         transform.position = playerCamPosition.position;
 
@@ -51,19 +49,6 @@ public class FirstPersonCameraController : MonoBehaviour
         firstPersonCamera.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         playerOrientation.rotation = Quaternion.Euler(0, yRotation, 0);
         playerCamPosition.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-    }
-
-    void DisableObjects()
-    {
-        foreach (GameObject lamp in flourescentLightCollection)
-        {
-            float distance = Vector3.Distance(transform.position, lamp.transform.position);
-
-            if (distance > 25f)
-                lamp.SetActive(false);
-            else
-                lamp.SetActive(true);
-        }
     }
 
     void AdjustSens(float value)

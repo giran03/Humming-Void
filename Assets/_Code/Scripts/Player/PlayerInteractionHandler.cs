@@ -10,7 +10,7 @@ interface IInteractable
 
 public class PlayerInteractionHandler : MonoBehaviour
 {
-    [Header ("Level Dimensions")]
+    [Header("Level Dimensions")]
     [SerializeField] GameObject[] dimensions;
 
     [Header("Configs")]
@@ -156,7 +156,12 @@ public class PlayerInteractionHandler : MonoBehaviour
         }
 
         if (other.gameObject.CompareTag("Finish"))
-            LevelSceneManager.Instance.GoToScene("Level 2 Cifra");
-            
+        {
+            if (LevelSceneManager.Instance.CurrentScene() == "Level 1 Parreno")
+                LevelSceneManager.Instance.GoToScene("Level 2 Cifra");
+            else
+                Debug.Log("No Scenes Available Next");
+        }
+
     }
 }

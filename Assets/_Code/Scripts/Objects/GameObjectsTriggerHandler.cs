@@ -20,7 +20,6 @@ public class GameObjectsTriggerHandler : MonoBehaviour
     [SerializeField] bool toggleLightSwitch;
 
     [Header("Trigger will also render region")]
-    [SerializeField] bool renderRegion;
 
     LightsFlickerController lightsFlickerController;
     GameObject[] lightCollection;
@@ -62,9 +61,6 @@ public class GameObjectsTriggerHandler : MonoBehaviour
 
     void Activated()
     {
-        if (renderRegion)
-            gameManager.FindLights();
-
         gameManager.FlipState(flipThisObjectsActiveState);
         isTriggered = true;
 

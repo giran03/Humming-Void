@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +8,7 @@ public class LevelSceneManager : MonoBehaviour
 {
     public static LevelSceneManager Instance;
     public static Action<string> OnSceneChanged;
+    string currentScene;
 
     private void Awake()
     {
@@ -26,9 +28,14 @@ public class LevelSceneManager : MonoBehaviour
             EnableCursor();
     }
 
-    public void GoToScene(string sceneName) => SceneManager.LoadSceneAsync(sceneName);
+    private void Update() => currentScene = SceneManager.GetActiveScene().name;
 
-    public void Play() => OnSceneChanged("Level 1 Parreno");
+    public void GoToScene(string sceneName)
+    {
+        SceneManager.LoadSceneAsync(sceneName);
+    }
+
+    public void Play() => GoToScene("Level 1 Parreno");
 
     public void Quit() => Application.Quit();
 
@@ -39,6 +46,7 @@ public class LevelSceneManager : MonoBehaviour
         SceneManager.LoadScene("Main Menu");
     }
 
+    public string CurrentScene() => currentScene;
 
     public void PauseGame(GameObject pauseMenu)
     {
