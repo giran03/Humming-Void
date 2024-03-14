@@ -15,6 +15,7 @@ public class PuzzleUnlockerHandler : MonoBehaviour
     GameObject[] buttonCollection;
     ButtonInteraction buttonInteraction;
     GameManager gameManager;
+    private bool sfxPlayed;
 
     private void Start()
     {
@@ -32,8 +33,16 @@ public class PuzzleUnlockerHandler : MonoBehaviour
             ResetAnswer();
     }
 
-    void AcceptAnswer() => gameManager.TriggerAnimation(animator, animName);
-
+    void AcceptAnswer()
+    {
+        gameManager.TriggerAnimation(animator, animName);
+        if(!sfxPlayed)
+        {
+            sfxPlayed = true;
+            AudioManager.Instance.PlaySFX("Buzzer", animator.gameObject.transform.position);
+            AudioManager.Instance.PlaySFX("MetalBars", animator.gameObject.transform.position);
+        }
+    }
     void ResetAnswer()
     {
         answerCode.Clear();

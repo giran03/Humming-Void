@@ -12,7 +12,11 @@ public class Graffiti_Interaction : MonoBehaviour, IInteractable
     }
     public void Interact()
     {
+        AudioManager.Instance.PlaySFX("Graffiti_Erase", transform.position);
         playerInteractionHandler.graffitiCount++;
+        
+        PlayerPrefs.SetInt("graffitiCount", playerInteractionHandler.graffitiCount); // save graffiti collected to player prefs
+        
         var graffiti = gameObject;
         Destroy(graffiti);
     }

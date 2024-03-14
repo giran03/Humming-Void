@@ -7,6 +7,7 @@ public class DoorController : MonoBehaviour
     [Header("Door Configs")]
     [SerializeField] bool requireKey;
     [SerializeField] float autoCloseDoorCooldown;
+    [SerializeField] GameObject findKeyInfo;
 
     bool isDoorOnCooldown;
     bool isDoorOpen;
@@ -34,14 +35,15 @@ public class DoorController : MonoBehaviour
                         requireKey = false;
                     }
                 }
+                else if (requireKey && playerCollisionHandler.keyCount <= 0)
+                    StartCoroutine(ShowKeyInfo());
                 else if (!requireKey && !isDoorOpen && !isDoorOnCooldown)
                     UseDoor();
-                else
-                    Debug.Log("Find some keys!");
     }
 
     public void UseDoor()
     {
+        AudioManager.Instance.PlaySFX("Door_Open", gameObject.transform.position);
         doorAnim.SetTrigger("OpenDoor");
         isDoorOpen = true;
         StartCoroutine(DoorCooldown());
@@ -51,8 +53,16 @@ public class DoorController : MonoBehaviour
     {
         isDoorOnCooldown = true;
         yield return new WaitForSeconds(autoCloseDoorCooldown);
+        AudioManager.Instance.PlaySFX("Door_Close", gameObject.transform.position);
         doorAnim.SetTrigger("CloseDoor");
         isDoorOpen = false;
         isDoorOnCooldown = false;
+    }
+
+    IEnumerator ShowKeyInfo()
+    {
+        findKeyInfo.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        findKeyInfo.SetActive(false);
     }
 }

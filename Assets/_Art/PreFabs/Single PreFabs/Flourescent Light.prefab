@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6511921473948981029}
   - component: {fileID: 4818030530820630210}
   - component: {fileID: 2863503196898081265}
+  - component: {fileID: 5605076148987591785}
   m_Layer: 6
   m_Name: Lamp
   m_TagString: Light
@@ -99,7 +100,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 0.5
-  m_Range: 30
+  m_Range: 11.142569
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -137,10 +138,10 @@ Light:
     serializedVersion: 2
     m_Bits: 63
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
@@ -188,7 +189,37 @@ MonoBehaviour:
   minWaitTime: 0.1
   maxWaitTime: 0.5
   minLightIntensity: 0.3
-  turnOffAllLights: 0
+--- !u!114 &5605076148987591785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3174926248762148339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 900af884055bc2d4692eeed1a8139546, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LightShouldBeOn: 1
+  UpdateDelay: 0.4
+  ShadowQualityLods:
+  - DistanceRange: {x: 0, y: 8}
+    ShadowResolution: 3
+    CastNoShadows: 0
+    DebugColor: {r: 0.990566, g: 0.90748453, b: 0.5747152, a: 0}
+  - DistanceRange: {x: 8, y: 25}
+    ShadowResolution: 2
+    CastNoShadows: 1
+    DebugColor: {r: 1, g: 0.4009434, b: 0.4009434, a: 0}
+  - DistanceRange: {x: 25, y: 9999}
+    ShadowResolution: 2
+    CastNoShadows: 1
+    DebugColor: {r: 0.6969524, g: 1, b: 0.39999998, a: 0}
+  ShowLightColorAsDebugColor: 0
+  DistanceFromPlayer: 0
+  IsClamped: 0
+  LOD: 0
 --- !u!1 &6347965293239892146
 GameObject:
   m_ObjectHideFlags: 0
