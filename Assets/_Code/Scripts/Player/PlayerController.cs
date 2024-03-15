@@ -70,10 +70,7 @@ public class PlayerController : MonoBehaviour
             rb.drag = groundDrag;
     }
 
-    void FixedUpdate()
-    {
-        MovePlayer();
-    }
+    void FixedUpdate() => MovePlayer();
 
     void MyInput()
     {

@@ -18,14 +18,17 @@ public class EndScreenManager : MonoBehaviour
 
         highScore = PlayerPrefs.GetInt("highScore");
         currentTotal = PlayerPrefs.GetInt("graffitiCount");
+
         // display the total graffiti collected count
         graffitiCollectedText.SetText("X " + currentTotal);
 
+        // sets new high score
         if (currentTotal > highScore)
         {
             PlayerPrefs.SetInt("highScore", currentTotal);
             highScoreText.SetText("X " + currentTotal);
         }
+        // display last high score
         else
             highScoreText.SetText("X " + highScore);
 

@@ -22,8 +22,9 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
             LevelSceneManager.Instance.GoToScene("Level 1 Parreno");
         else if (Input.GetKeyDown(KeyCode.Alpha2))
-            LevelSceneManager.Instance.GoToScene("Level 2 Cifra");
-        // ADD BINDS FOR LEVEL 3
+            LevelSceneManager.Instance.GoToScene("Level 2 Perucho");
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+            LevelSceneManager.Instance.GoToScene("Level 3 Cifra");
     }
 
     public void FlipState(GameObject[] gameObjects)

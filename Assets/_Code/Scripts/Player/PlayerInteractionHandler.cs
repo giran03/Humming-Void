@@ -22,7 +22,7 @@ public class PlayerInteractionHandler : MonoBehaviour
     [SerializeField] TMP_Text graffitiText;
     [SerializeField] TMP_Text keyText;
 
-    [Header("PhysGun Properties")]
+    [Header("Grab Cube")]
     [SerializeField] LayerMask interactLayer;
     [SerializeField] float maxGrabDistance;
     [SerializeField] float minGrabDistance;
@@ -83,6 +83,7 @@ public class PlayerInteractionHandler : MonoBehaviour
                 Release();
     }
 
+    //  Grab cube
     private void Grab()
     {
         if (Physics.Raycast(ray, out RaycastHit hit, maxGrabDistance, interactLayer)
@@ -97,6 +98,7 @@ public class PlayerInteractionHandler : MonoBehaviour
         }
     }
 
+    // release cube
     private void Release()
     {
         AudioManager.Instance.StopSFX();
@@ -122,10 +124,7 @@ public class PlayerInteractionHandler : MonoBehaviour
             interactText.SetActive(false);
     }
 
-    void ResetStats()
-    {
-        keyCount = 0;
-    }
+    void ResetStats() => keyCount = 0;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -156,10 +155,15 @@ public class PlayerInteractionHandler : MonoBehaviour
             }
         }
 
+        // next level
         if (other.gameObject.CompareTag("Finish"))
         {
             if (LevelSceneManager.Instance.CurrentScene() == "Level 1 Parreno")
-                LevelSceneManager.Instance.GoToScene("Level 2 Cifra");
+                LevelSceneManager.Instance.GoToScene("Level 2 Perucho");
+            else if (LevelSceneManager.Instance.CurrentScene() == "Level 2 Perucho")
+                LevelSceneManager.Instance.GoToScene("Level 3 Cifra");
+            else if (LevelSceneManager.Instance.CurrentScene() == "Level 3 Cifra")
+                LevelSceneManager.Instance.GoToScene("End Screen");
             else
                 Debug.Log("No Scenes Available Next");
         }

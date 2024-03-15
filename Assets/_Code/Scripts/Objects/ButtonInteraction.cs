@@ -56,8 +56,6 @@ public class ButtonInteraction : MonoBehaviour, IInteractable
     {
         buttonAnim = GetComponent<Animator>();
         rend = lightSphere.GetComponent<Renderer>();
-
-
     }
 
     public void Interact()
@@ -87,12 +85,14 @@ public class ButtonInteraction : MonoBehaviour, IInteractable
 
     void TriggerAnimation()
     {
+        // if animator and animation name is 1
         if (animator.Length == 1 && animName.Length == 1)
         {
             animator[0].SetTrigger(animName[0]);
             animatorPos = animator[0].gameObject.transform.position;
         }
 
+        // play same animation for every animator
         else
             for (int i = 0; i < animator.Length; i++)
             {

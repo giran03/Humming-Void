@@ -17,8 +17,6 @@ public class LevelSceneManager : MonoBehaviour
         else
             Instance = this;
 
-        // OnSceneChanged += (scene) => GoToScene(scene);
-
         QualitySettings.vSyncCount = 1;
     }
 
@@ -30,10 +28,7 @@ public class LevelSceneManager : MonoBehaviour
 
     private void Update() => currentScene = SceneManager.GetActiveScene().name;
 
-    public void GoToScene(string sceneName)
-    {
-        SceneManager.LoadSceneAsync(sceneName);
-    }
+    public void GoToScene(string sceneName) => SceneManager.LoadSceneAsync(sceneName);
 
     public void Play()
     {
@@ -90,9 +85,9 @@ public class LevelSceneManager : MonoBehaviour
     }
 
     // MAIN MENU ANIMATIONS
-    public void CreditsScreenTransition()=> animator.SetTrigger("creditsShow");
+    public void CreditsScreenTransition() => animator.SetTrigger("creditsShow");
     public void CreditsToMenuTransition() => animator.SetTrigger("creditsToMenu");
 
-    public void ControlsScreenTransition()=> animator.SetTrigger("controlsShow");
+    public void ControlsScreenTransition() => animator.SetTrigger("controlsShow");
     public void ControlsToMenuTransition() => animator.SetTrigger("controlsToMenu");
 }
