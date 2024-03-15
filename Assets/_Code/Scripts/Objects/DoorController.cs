@@ -25,7 +25,7 @@ public class DoorController : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKey(KeyCode.E))
                 if (requireKey && playerCollisionHandler.keyCount > 0 && !isDoorOpen && !isDoorOnCooldown)
                 {
                     UseDoor();

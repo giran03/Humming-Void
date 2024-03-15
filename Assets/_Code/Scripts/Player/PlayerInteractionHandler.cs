@@ -157,16 +157,6 @@ public class PlayerInteractionHandler : MonoBehaviour
 
         // next level
         if (other.gameObject.CompareTag("Finish"))
-        {
-            if (LevelSceneManager.Instance.CurrentScene() == "Level 1 Parreno")
-                LevelSceneManager.Instance.GoToScene("Level 2 Perucho");
-            else if (LevelSceneManager.Instance.CurrentScene() == "Level 2 Perucho")
-                LevelSceneManager.Instance.GoToScene("Level 3 Cifra");
-            else if (LevelSceneManager.Instance.CurrentScene() == "Level 3 Cifra")
-                LevelSceneManager.Instance.GoToScene("End Screen");
-            else
-                Debug.Log("No Scenes Available Next");
-        }
-
+            LevelSceneManager.Instance.FinishLevel();
     }
 }

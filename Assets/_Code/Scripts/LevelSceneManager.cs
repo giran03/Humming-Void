@@ -50,6 +50,18 @@ public class LevelSceneManager : MonoBehaviour
         SceneManager.LoadScene("Main Menu");
     }
 
+    public void FinishLevel()
+    {
+        if (CurrentScene() == "Level 1 Parreno")
+            GoToScene("Level 2 Perucho");
+        else if (CurrentScene() == "Level 2 Perucho")
+            GoToScene("Level 3 Cifra");
+        else if (CurrentScene() == "Level 3 Cifra")
+            GoToScene("End Screen");
+        else
+            Debug.Log("No Scenes Available Next");
+    }
+
     public string CurrentScene() => currentScene;
 
     public void PauseGame(GameObject pauseMenu)
