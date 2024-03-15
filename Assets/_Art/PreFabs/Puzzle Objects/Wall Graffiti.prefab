@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3476788725205958979}
   m_Layer: 7
   m_Name: Wall Graffiti
-  m_TagString: Untagged
+  m_TagString: Graffiti
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141,7 +141,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 294667a72cb9b8a4d8cc6039d7593edf, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.7058824}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

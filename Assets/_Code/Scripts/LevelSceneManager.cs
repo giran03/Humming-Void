@@ -1,23 +1,98 @@
 using System;
+using System.Collections;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelSceneManager : MonoBehaviour
 {
-    public static Action<string> OnSceneChanged;
-    private void Awake() => OnSceneChanged += (scene) => GoToScene(scene);
-    private void Start()
+    [SerializeField] Animator animator = null;
+    public static LevelSceneManager Instance;
+    string currentScene;
+
+    private void Awake()
     {
-        if (SceneManager.GetActiveScene().name == "MainMenu")
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
+        if (Instance != null && Instance != this)
+            Destroy(gameObject);
+        else
+            Instance = this;
+
+        // OnSceneChanged += (scene) => GoToScene(scene);
+
+        QualitySettings.vSyncCount = 1;
     }
 
-    public void GoToScene(string sceneName) => SceneManager.LoadScene(sceneName);
+    private void Start()
+    {
+        if (SceneManager.GetActiveScene().name == "Main Menu")
+            EnableCursor();
+    }
 
-    public void Play() => OnSceneChanged("Level_1");
+    private void Update() => currentScene = SceneManager.GetActiveScene().name;
 
-    public void Quit() => Application.Quit();
+    public void GoToScene(string sceneName)
+    {
+        SceneManager.LoadSceneAsync(sceneName);
+    }
+
+    public void Play()
+    {
+        ResetGraffitiCount();
+        GoToScene("Level 1 Parreno");
+    }
+
+    public void Quit()
+    {
+        ResetGraffitiCount();
+        Application.Quit();
+    }
+
+    public void ReturnMainMenu()
+    {
+        Time.timeScale = 1f;
+        AudioManager.Instance.StopMusic();
+        ResetGraffitiCount();
+        SceneManager.LoadScene("Main Menu");
+    }
+
+    public string CurrentScene() => currentScene;
+
+    public void PauseGame(GameObject pauseMenu)
+    {
+        Time.timeScale = 0f;
+        pauseMenu.SetActive(!pauseMenu.activeSelf);
+        EnableCursor();
+    }
+
+    public void ResumeGame(GameObject pauseMenu)
+    {
+        Time.timeScale = 1f;
+        pauseMenu.SetActive(!pauseMenu.activeSelf);
+        DisableCursor();
+    }
+
+    public void DisableCursor()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
+    public void EnableCursor()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    void ResetGraffitiCount()
+    {
+        PlayerPrefs.SetInt("graffitiCount", 0);
+        PlayerPrefs.Save();
+    }
+
+    // MAIN MENU ANIMATIONS
+    public void CreditsScreenTransition()=> animator.SetTrigger("creditsShow");
+    public void CreditsToMenuTransition() => animator.SetTrigger("creditsToMenu");
+
+    public void ControlsScreenTransition()=> animator.SetTrigger("controlsShow");
+    public void ControlsToMenuTransition() => animator.SetTrigger("controlsToMenu");
 }

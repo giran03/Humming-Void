@@ -12,6 +12,8 @@ TagManager:
   - VoidCube
   - LightCube
   - Light
+  - TileDimension
+  - BackroomsDimension
   layers:
   - Default
   - TransparentFX
